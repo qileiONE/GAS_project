@@ -20,5 +20,10 @@
 void PCF8576_Ini(unsigned char mode,unsigned char glitter);
 void PCF8576_Point(unsigned addr,unsigned char dat);
 void PCF8576_Disp(unsigned addr,unsigned char *str,unsigned char no);
+void LCD_DisNum(unsigned long disnum);
+void LCD_DisClear(void);
+void LCD_DisAll(void);
+void LCD_DisLEL(void);
+void LCD_DisPPM(void);
 
 #endif
