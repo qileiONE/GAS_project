@@ -41,3 +41,4 @@
 .\objects\main.o: ..\HARDWARE\GPIO\gpio.h
 .\objects\main.o: ..\HARDWARE\IIC\dis.h
 .\objects\main.o: ..\HARDWARE\IIC\IIC.h
+.\objects\main.o: ..\HARDWARE\DAC\dac.h

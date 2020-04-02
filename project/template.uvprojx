@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F100, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CMSIS;..\User;..\Library\inc;..\HARDWARE\beep;..\HARDWARE\EXTI;..\HARDWARE\GPIO;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\OLED;..\HARDWARE\timer;..\HARDWARE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\IIC</IncludePath>
+              <IncludePath>..\CMSIS;..\User;..\Library\inc;..\HARDWARE\beep;..\HARDWARE\EXTI;..\HARDWARE\GPIO;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\OLED;..\HARDWARE\timer;..\HARDWARE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\IIC;..\HARDWARE\DAC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -607,6 +607,11 @@
               <FileName>dis.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\IIC\dis.c</FilePath>
+            </File>
+            <File>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DAC\dac.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "dis.h"
 #include "IIC.h"
+#include "dac.h"
 
 int main()
 {
@@ -24,19 +25,16 @@ int main()
 	//uart3_init(9600);
 	LED_GPIO_Config();
 	IIC_Init();
+	DAC_Configuration();
 	PCF8576_Ini(MODE_E,NOGLITTER);
 	delay_ms(300);	
 	LCD_DisAll();
 	delay_ms(1000);	
 	LCD_DisClear();
 	LCD_DisPPM();
+	DAC_Voltage_OutPut(1.5);
 	while(1)
 	{
-			LED_Warn(ON);
-			LCD_DisNum(shuzi);
-			//LCD_DisLEL();
-			shuzi = shuzi - 1;
-			delay_ms(50);
-			
+		
 	}
 }

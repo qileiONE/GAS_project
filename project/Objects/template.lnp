@@ -35,6 +35,7 @@
 ".\objects\timer.o"
 ".\objects\iic.o"
 ".\objects\dis.o"
+".\objects\dac.o"
 ".\objects\delay.o"
 ".\objects\sys.o"
 ".\objects\usart.o"

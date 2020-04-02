@@ -76,7 +76,8 @@ void PCF8576_Disp(unsigned addr,unsigned char *str,unsigned char no)
 
 void LCD_DisNum(unsigned long disnum)
 {
-
+	unsigned char up_none_disp[5] = {0x00};
+	PCF8576_Disp(0x16,up_none_disp,5);
 	if(disnum >= 200000)
 	{
 		return;
