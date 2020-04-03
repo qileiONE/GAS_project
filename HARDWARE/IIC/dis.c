@@ -153,3 +153,26 @@ void LCD_DisPPM(void)
 {
 	PCF8576_Disp(0x00,ucDOWNPPMcode,11);
 }
+
+
+void LCD_DisLELValue(unsigned long lelvalue)
+{
+		if(lelvalue == 0)
+		{
+			PCF8576_Point(ucUPnumpos[3],ucUPnumcode[0]);
+			PCF8576_Point(ucUPnumpos[4],ucUPnumcode[0]); 
+			LCD_DisLEL();
+		}
+		else
+		{
+			LCD_DisNum(lelvalue);
+			LCD_DisLEL();
+		}
+}
+
+void LCD_DisPPMValue(unsigned long ppmvalue)
+{
+	LCD_DisNum(ppmvalue);
+	LCD_DisPPM();
+}
+

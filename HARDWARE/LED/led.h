@@ -18,7 +18,7 @@
 #define ON  1
 #define OFF 0
 
-#define LED_Working(a)	if (a)	\
+#define LED(a)	if (a)	\
 					GPIO_SetBits(LED_GPIO_Port_Working,LED_Pin_Working);\
 					else		\
 					GPIO_ResetBits(LED_GPIO_Port_Working,LED_Pin_Working)

@@ -21,8 +21,8 @@ int main()
 	delay_init();	    	 //	  
 	NVIC_Configuration(); 	 //
 	TIM2_NVIC_Configuration(); 
-	TIM2_Configuration(); 		
-	//uart3_init(9600);
+	TIM2_Configuration();
+	uart_init(115200);
 	LED_GPIO_Config();
 	IIC_Init();
 	DAC_Configuration();
@@ -31,10 +31,12 @@ int main()
 	LCD_DisAll();
 	delay_ms(1000);	
 	LCD_DisClear();
-	LCD_DisPPM();
 	DAC_Voltage_OutPut(1.5);
+	
+	uCurrentSensor = 1;
 	while(1)
 	{
-		
+		GP_CommProcess();
+		LCD_DisLELValue(ulCH4LELValue);
 	}
 }

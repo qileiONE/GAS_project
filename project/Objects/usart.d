@@ -31,3 +31,6 @@
 .\objects\usart.o: ..\Library\inc\misc.h
 .\objects\usart.o: ..\SYSTEM\usart\usart.h
 .\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: ..\HARDWARE\timer\timer.h
+.\objects\usart.o: ..\HARDWARE\config.h
+.\objects\usart.o: ..\HARDWARE\LED\led.h

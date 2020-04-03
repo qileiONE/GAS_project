@@ -25,5 +25,7 @@ void LCD_DisClear(void);
 void LCD_DisAll(void);
 void LCD_DisLEL(void);
 void LCD_DisPPM(void);
+void LCD_DisLELValue(unsigned long lelvalue);
+void LCD_DisPPMValue(unsigned long ppmvalue);
 
 #endif
