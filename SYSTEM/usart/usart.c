@@ -273,7 +273,7 @@ void TIM3_Init(u16 arr,u16 psc)
  /*发送一个字节数据*/
 void UART1SendByte(unsigned char SendData)
 {	   
-		LED(OFF);
+		//LED(OFF);
 		USART_SendData(USART1,SendData);
 		while(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	//	LED(ON);	    

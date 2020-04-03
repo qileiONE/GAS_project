@@ -33,3 +33,6 @@
 .\objects\comm.o: ..\HARDWARE\config.h
 .\objects\comm.o: ..\SYSTEM\usart\usart.h
 .\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\comm.o: ..\HARDWARE\timer\timer.h
+.\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\comm.o: ..\SYSTEM\delay\delay.h

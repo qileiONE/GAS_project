@@ -6,6 +6,15 @@
 
 #define VERSION		0X01
 
+#define DIS_TIME  	1000 //1000ms PPM 和 LEL切换显示时间
+#define RESPONSE_TIME		2000   //2000ms 2s 传感器超时回复时间
+
+//#define    //校准直接到comm.c文件中改发送的数据
+
+#define UPPER_LIMIT 	80   //阈值上限  80%LEL 
+#define LOWER_LIMIT   10		//阈值下限	0%LEL
+
+
 #define IN
 #define OUT
 #define INOUT
@@ -54,6 +63,15 @@ enum SensorType
 
 	SensorType_NULL
 };
+enum SensorSet
+{
+	S_RESET = 1,
+	S_ZERO ,
+	S_CORRECT,
+	
+	SensorSet_NULL
+};
+
 
 struct ComPara_Device
 {

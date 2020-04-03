@@ -14,10 +14,10 @@
 #include "IIC.h"
 #include "dac.h"
 
+
+
 int main()
 {
-	unsigned char i;
-	unsigned long shuzi = 9999;
 	delay_init();	    	 //	  
 	NVIC_Configuration(); 	 //
 	TIM2_NVIC_Configuration(); 
@@ -33,10 +33,26 @@ int main()
 	LCD_DisClear();
 	DAC_Voltage_OutPut(1.5);
 	
-	uCurrentSensor = 1;
+	SensorTypeCheck();
+	
+//	uCurrentSensor = 1;
+	time_enable = 1;
+	time_count_num = 100;
+	
+	dis_time_enable = 1;
+	dis_time_count =0 ;
 	while(1)
-	{
+	{	
 		GP_CommProcess();
-		LCD_DisLELValue(ulCH4LELValue);
+		//display
+		if(dis_renew == 0)
+		{
+			LCD_DisLELValue(ulCH4LELValue);
+		}
+		else if(dis_renew == 1)
+		{
+			LCD_DisPPMValue(ulCH4PPMValue);
+		}
+			
 	}
 }
