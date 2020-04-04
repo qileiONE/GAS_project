@@ -36,6 +36,7 @@
 ".\objects\iic.o"
 ".\objects\dis.o"
 ".\objects\dac.o"
+".\objects\relay.o"
 ".\objects\delay.o"
 ".\objects\sys.o"
 ".\objects\usart.o"

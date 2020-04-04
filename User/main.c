@@ -13,7 +13,7 @@
 #include "dis.h"
 #include "IIC.h"
 #include "dac.h"
-
+#include "key.h"
 
 
 int main()
@@ -26,6 +26,7 @@ int main()
 	LED_GPIO_Config();
 	IIC_Init();
 	DAC_Configuration();
+	Key_GPIO_Config();
 	PCF8576_Ini(MODE_E,NOGLITTER);
 	delay_ms(300);	
 	LCD_DisAll();
@@ -43,6 +44,7 @@ int main()
 	dis_time_count =0 ;
 	while(1)
 	{	
+		Key_Process();
 		GP_CommProcess();
 		//display
 		if(dis_renew == 0)

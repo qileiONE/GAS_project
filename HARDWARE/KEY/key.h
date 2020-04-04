@@ -10,11 +10,26 @@
 #define KEY_ON	0
 #define KEY_OFF	1
 
-#define SET_KEY_UP()			( GPIOA->IDR & 0x0040 )			//PA7	
-#define SET_KEY_DOWN()			( GPIOB->IDR & 0x0000 )			//PB0
+#define	KEY_VALUE_RESET			0x31							//
+#define	KEY_VALUE_ZARO			0x32							//
+
+#define SET_KEY_RESET()			( GPIOA->IDR & 0x0040 )			//PA7	
+#define SET_KEY_ZERO()			( GPIOB->IDR & 0x0000 )			//PB0
+
+
+extern u8  key_bit;
+extern u8  key_value ;
+extern u8  last_key_value;
+extern u8  key_value_ok ;
+extern u16  key_count ;
+extern u16  key_time_5s_count ;
+extern vu8  key_time_5s_bit ;
+extern u8 	 key_res;
 
 void Key_GPIO_Config(void);
 u8 Key_Scan(GPIO_TypeDef* GPIOx,u16 GPIO_Pin);
+u8 Get_Key_Process( void );
+void Key_Process(void);
 
 #endif /* __LED_H */
 

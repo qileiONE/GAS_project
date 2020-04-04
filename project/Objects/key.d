@@ -29,3 +29,8 @@
 .\objects\key.o: ..\Library\inc\stm32f10x_usart.h
 .\objects\key.o: ..\Library\inc\stm32f10x_wwdg.h
 .\objects\key.o: ..\Library\inc\misc.h
+.\objects\key.o: ..\User\comm.h
+.\objects\key.o: ..\SYSTEM\sys\sys.h
+.\objects\key.o: ..\HARDWARE\config.h
+.\objects\key.o: ..\HARDWARE\timer\timer.h
+.\objects\key.o: ..\HARDWARE\IIC\dis.h

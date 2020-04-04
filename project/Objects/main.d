@@ -42,3 +42,4 @@
 .\objects\main.o: ..\HARDWARE\IIC\dis.h
 .\objects\main.o: ..\HARDWARE\IIC\IIC.h
 .\objects\main.o: ..\HARDWARE\DAC\dac.h
+.\objects\main.o: ..\HARDWARE\KEY\key.h
