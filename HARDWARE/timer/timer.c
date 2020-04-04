@@ -65,7 +65,7 @@ void TIM2_IRQHandler(void)
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update  );  //清除TIM7更新中断标志    
 		//TIM_Cmd(TIM2, DISABLE);  //关闭TIM7 
 		
-		i = 0xff;//Get_Key_Process();
+		i = Get_Key_Process();
 		if(i != 0xff)
 		{
 			if(key_bit == 0)

@@ -34,3 +34,5 @@
 .\objects\key.o: ..\HARDWARE\config.h
 .\objects\key.o: ..\HARDWARE\timer\timer.h
 .\objects\key.o: ..\HARDWARE\IIC\dis.h
+.\objects\key.o: ..\HARDWARE\LED\led.h
+.\objects\key.o: ..\SYSTEM\delay\delay.h

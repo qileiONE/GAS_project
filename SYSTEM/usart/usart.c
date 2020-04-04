@@ -227,7 +227,7 @@ void TIM3_IRQHandler(void)
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)//是更新中断
 	{	 			   
 		USART_RX_STA|=1<<15;	//标记接收完成
-		LED(ON);
+		LED(LED_ON);
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);  //清除TIMx更新中断标志    
 		TIM3_Set(0);			//关闭TIM3  
 	}   
@@ -292,7 +292,7 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 		{ 
 			if(USART_RX_STA<100)		//还可以接收数据
 			{
-				LED(OFF);
+				LED(LED_OFF);
 				TIM_SetCounter(TIM3,0);//计数器清空      
 				if(USART_RX_STA==0)TIM3_Set(1);	 	//使能定时器4的中断 	 
 					USART_RX_BUF[USART_RX_STA++]=res;		//记录接收到的值
@@ -301,7 +301,7 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 			}else 
 			{
 				USART_RX_STA|=1<<15;					//强制标记接收完成
-				LED(ON);
+				LED(LED_ON);
 			} 
 		}  		 
   } 

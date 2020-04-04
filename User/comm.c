@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "string.h"
 #include "delay.h"
+#include "dac.h"
 
 u8 uCurrentSensor;  //
 u8 uRevNumCount = 0; //
@@ -343,6 +344,30 @@ void GP_SensorSet(unsigned char s_s)
 		default:
 			break;
 	}
+}
+
+//
+void GP_CurrentSet(float g_ma)
+{
+	if(g_ma > 20)
+	{
+		g_ma = 20;
+	}
+	if(g_ma < 4)
+	{
+		g_ma = 4;
+	}
+	DAC_Voltage_OutPut(g_ma/10);
+}
+
+float out_ma;
+void GP_LEL2Current(unsigned long lelvalue)
+{
+	double out_ma;
+	out_ma = (LEL_MAX - LEL_MIN)*10/16;
+	out_ma = lelvalue / out_ma;
+	out_ma += 4;
+	GP_CurrentSet(out_ma);
 }
 
 //void GP_SensorReset(void)

@@ -13,8 +13,8 @@
 #define	KEY_VALUE_RESET			0x31							//
 #define	KEY_VALUE_ZARO			0x32							//
 
-#define SET_KEY_RESET()			( GPIOA->IDR & 0x0040 )			//PA7	
-#define SET_KEY_ZERO()			( GPIOB->IDR & 0x0000 )			//PB0
+#define SET_KEY_RESET()			 GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_7)			//PA7	
+#define SET_KEY_ZERO()			 GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)			//PB0
 
 
 extern u8  key_bit;

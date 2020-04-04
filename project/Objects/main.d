@@ -43,3 +43,4 @@
 .\objects\main.o: ..\HARDWARE\IIC\IIC.h
 .\objects\main.o: ..\HARDWARE\DAC\dac.h
 .\objects\main.o: ..\HARDWARE\KEY\key.h
+.\objects\main.o: ..\HARDWARE\relay\relay.h

@@ -12,6 +12,9 @@ BYTE GP_CommArrange(void);
 void SensorTypeCheck(void);
 void GP_CommProcess(void);
 void GP_SensorSet(unsigned char s_s);
+void GP_LEL2Current(unsigned long lelvalue);
+void GP_CurrentSet(float g_ma);
+
 #endif
 
 

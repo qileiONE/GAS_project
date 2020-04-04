@@ -32,10 +32,12 @@ void DAC_Voltage_OutPut(float vt)
   u16 md;
   float mt;
 
-  mt=vt*4096/3.3; //
+  mt=vt*100*4096/330; //
   md=(float)mt;
 
   DAC_SetChannel1Data(DAC_Align_12b_R,md);
 	DAC_SoftwareTriggerCmd(DAC_Channel_1,ENABLE);
 }
+
+
 

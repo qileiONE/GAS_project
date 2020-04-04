@@ -15,6 +15,9 @@
 #define LOWER_LIMIT   10		//ãÐÖµÏÂÏÞ	0%LEL
 
 
+#define LEL_MAX    100
+#define LEL_MIN			0
+
 #define IN
 #define OUT
 #define INOUT

@@ -36,3 +36,4 @@
 .\objects\comm.o: ..\HARDWARE\timer\timer.h
 .\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\comm.o: ..\SYSTEM\delay\delay.h
+.\objects\comm.o: ..\HARDWARE\DAC\dac.h
