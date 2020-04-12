@@ -39,7 +39,7 @@ void SensorTypeCheck(void)
 	//看看是不是SUS316L
 	
 	uart_init(115200);
-	delay_ms(500);
+	delay_ms(200);
 	res_time_count = 0;
 	res_end_flag = 0;
 	res_time_enable = 1;
@@ -48,7 +48,7 @@ void SensorTypeCheck(void)
 		if(GP_CommArrange()==OK)
 		{
 			len = strlen((char*)REV_BUF);
-			if(len >= 24 && len <= 25)  //用长度判断
+			if(len >= 24 && len <= 31)  //用长度判断
 			{
 				uCurrentSensor = SUS316L;
 				res_time_enable = 0;
@@ -57,7 +57,7 @@ void SensorTypeCheck(void)
 		}
 	}
 	uart_init(9600);
-	delay_ms(500);
+	delay_ms(200);
 	res_time_count = 0;
 	res_end_flag = 0;
 	res_time_enable = 1;
@@ -100,6 +100,7 @@ BYTE GP_CommArrange(void)
 //				return ERROR_OTHER;
 //			}	
 			REV_BUF[i] = USART_RX_BUF[i]; 
+			USART_RX_BUF[i] = 0;
 		}
 		//
 
@@ -123,36 +124,37 @@ void GP_CommProcess(void)
 		{
 			case SUS316L:
 				ulCH4LELValue = 0;
-				for(i=0;i<5;i++)
-				{
-					if(REV_BUF[i] == 0x2E)
-					{
-						numbit = i;
-						break;
-					}
-				}
-				switch(numbit)
-				{
-					case 0:
-						ulCH4LELValue += REV_BUF[0+1]-0x30;
-					break;
-					case 1:
-						ulCH4LELValue = (REV_BUF[0]-0x30)*10+(REV_BUF[1+1]-0x30);
-					break;
-					case 2:
-						ulCH4LELValue = (REV_BUF[0]-0x30)*100+(REV_BUF[1]-0x30)*10+(REV_BUF[2+1]-0x30);
-					break;
-					case 3:
-						ulCH4LELValue = (REV_BUF[0]-0x30)*1000+(REV_BUF[1]-0x30)*100+(REV_BUF[2]-0x30)*10+(REV_BUF[3+1]-0x30);
-					break;
-				}
-				ulCH4PPMValue = ulCH4LELValue*500;
+//				for(i=0;i<5;i++)
+//				{
+//					if(REV_BUF[i] == 0x2E)
+//					{
+//						numbit = i;
+//						break;
+//					}
+//				}
+				ulCH4LELValue = (REV_BUF[1]-0x30)*1000+(REV_BUF[2]-0x30)*100+(REV_BUF[3]-0x30)*10+(REV_BUF[4+1]-0x30);
+//				switch(numbit)
+//				{
+//					case 0:
+//						ulCH4LELValue += REV_BUF[0+1]-0x30;
+//					break;
+//					case 1:
+//						ulCH4LELValue = (REV_BUF[0]-0x30)*10+(REV_BUF[1+1]-0x30);
+//					break;
+//					case 2:
+//						ulCH4LELValue = (REV_BUF[0]-0x30)*100+(REV_BUF[1]-0x30)*10+(REV_BUF[2+1]-0x30);
+//					break;
+//					case 3:
+//						ulCH4LELValue = (REV_BUF[0]-0x30)*1000+(REV_BUF[1]-0x30)*100+(REV_BUF[2]-0x30)*10+(REV_BUF[3+1]-0x30);
+//					break;
+//				}
+				ulCH4PPMValue = ulCH4LELValue*50;
 				break;
 				
 			case MIPEX_03:
 				ulCH4LELValue = 0;
 				ulCH4LELValue = (REV_BUF[1]*0xff+REV_BUF[2]);
-				ulCH4PPMValue = ulCH4LELValue*500;
+				ulCH4PPMValue = ulCH4LELValue*50;
 				break;
 			
 			default :

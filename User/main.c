@@ -24,6 +24,7 @@ int main()
 	TIM2_NVIC_Configuration(); 
 	TIM2_Configuration();
 	uart_init(115200);
+//	GP_CommProcess();
 	LED_GPIO_Config();
 	IIC_Init();
 	DAC_Configuration();
@@ -31,7 +32,7 @@ int main()
 	RELAY_GPIO_Config();
 	PCF8576_Ini(MODE_E,NOGLITTER);
 	LED_Warn(LED_OFF);
-	delay_ms(300);	
+	//delay_ms(300);	
 	LCD_DisAll();
 	delay_ms(500);	
 	LCD_DisClear();
@@ -41,31 +42,36 @@ int main()
 	LED_Warn(LED_ON);
 	
 	GP_LEL2Current(0);
-//	uCurrentSensor = 1;
-	time_enable = 1;
-	time_count_num = 100;
+	//uCurrentSensor = 1;
+//	time_enable = 1;
+//	time_count_num = 100;
 	
 	dis_time_enable = 1;
 	dis_time_count =0 ;
 
+	key_value_ok = 0xff;
+	
+	ulCH4LELValue = 0;
+	ulCH4PPMValue = 0;
+	
 	RELAY_UP(OFF);
 	RELAY_WARN(OFF);
 	RELAY_DOWN(OFF);
 	while(1)
 	{	
-		
+		GP_CommProcess();
 		if(ulCH4LELValue >= UPPER_LIMIT*10)
 		{
 			RELAY_UP(ON);
 			RELAY_WARN(ON);
 		}
-		else if(ulCH4LELValue < LOWER_LIMIT)
+		else if(ulCH4LELValue < LOWER_LIMIT*10)
 		{
 			RELAY_DOWN(ON);
 		}
 		
 		Key_Process();
-		GP_CommProcess();
+		//GP_CommProcess();
 		//display
 		if(dis_renew == 0)
 		{

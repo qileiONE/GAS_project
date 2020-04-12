@@ -216,7 +216,7 @@ void uart_init(u32 bound)
 //	TIM_Cmd(TIM2, ENABLE);  //关闭TIM7 
 	START_TIME;
 	USART_RX_STA=0;
-	TIM3_Init(99*10,7199);		//100ms中断
+	TIM3_Init(99*10,2399);		//100ms中断
 	TIM3_Set(0);			//关闭定时器4
 
 }
@@ -265,7 +265,7 @@ void TIM3_Init(u16 arr,u16 psc)
 	 	  
 	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;//抢占优先级3
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		//子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		//子优先级3
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器	
 }

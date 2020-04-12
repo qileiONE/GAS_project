@@ -157,10 +157,14 @@ void LCD_DisPPM(void)
 
 void LCD_DisLELValue(unsigned long lelvalue)
 {
-		if(lelvalue == 0)
+	unsigned char up_none_disp[5] = {0x00};
+	
+		if(lelvalue < 10)
 		{
+			//LCD_DisNum(lelvalue);
+			PCF8576_Disp(0x16,up_none_disp,5);
 			PCF8576_Point(ucUPnumpos[3],ucUPnumcode[0]);
-			PCF8576_Point(ucUPnumpos[4],ucUPnumcode[0]); 
+			PCF8576_Point(ucUPnumpos[4],ucUPnumcode[lelvalue]); 
 			LCD_DisLEL();
 		}
 		else

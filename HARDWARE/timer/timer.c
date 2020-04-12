@@ -24,8 +24,8 @@ void TIM2_NVIC_Configuration(void)
     
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  													
     NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;	  
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;	
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;	
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 }
@@ -68,6 +68,7 @@ void TIM2_IRQHandler(void)
 		i = Get_Key_Process();
 		if(i != 0xff)
 		{
+			//i = 0xff;
 			if(key_bit == 0)
 			{
 				key_count++;
@@ -93,7 +94,7 @@ void TIM2_IRQHandler(void)
 			{
 				if( key_res == KEY_VALUE_ZARO ){
 					key_time_5s_count++;
-					if( (key_time_5s_count>=500) && (key_time_5s_bit == 0) ){			
+					if( (key_time_5s_count>=200) && (key_time_5s_bit == 0) ){			
 						key_time_5s_bit = 1;
 						key_time_5s_count = 0;
 						key_res = 0xff;
