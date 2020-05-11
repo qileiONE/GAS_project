@@ -13,6 +13,7 @@
 
 #define UPPER_LIMIT 	80   //阈值上限  80%LEL 
 #define LOWER_LIMIT   10		//阈值下限	0%LEL
+#define WARN_LIMIT   10		//阈值下限	0%LEL
 
 
 #define LEL_MAX    100

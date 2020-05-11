@@ -78,27 +78,27 @@ void Key_Process(void)
 	if( key_value_ok == 0xff )return ;
 	if( key_value_ok == KEY_VALUE_RESET )
 	{
-		LED_Warn(LED_OFF);
+		LED_Warn(LED_ON);
 		GP_SensorSet(S_RESET);
 		delay_ms(500);
-		LED_Warn(LED_ON);
-	}
-	if( key_value_ok == KEY_VALUE_ZARO )
-	{
 		LED_Warn(LED_OFF);
+	}
+	if( key_value_ok == KEY_VALUE_ZARO && SET_KEY_ZERO( ) != 0 && key_time_5s_bit == 0)
+	{
+		LED_Warn(LED_ON);
 		GP_SensorSet(S_ZERO);
 		delay_ms(500);
-		LED_Warn(LED_ON);
+		LED_Warn(LED_OFF);
 	}
 	if(key_time_5s_bit == 1)
 	{
-		LED_Warn(LED_OFF);
+		LED_Warn(LED_ON);
 		LCD_DisAll();
-		GP_SensorSet(S_CORRECT);
+		GP_SensorSet(S_CORRECT);//S_ZERO
 		key_time_5s_bit = 0;
 		LCD_DisClear();
 		delay_ms(500);
-		LED_Warn(LED_ON);
+		LED_Warn(LED_OFF);
 	}
 	
 	key_value_ok = 0xff;

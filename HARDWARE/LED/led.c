@@ -12,6 +12,9 @@ void LED_GPIO_Config(void)
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOB, &GPIO_InitStructure);  //初始化PC端口
 	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable , ENABLE);
+	
 	GPIO_SetBits(LED_GPIO_Port_Working, LED_Pin_Working);	
   GPIO_SetBits(LED_GPIO_Port_Warn, LED_Pin_Warn);	 // 关闭所有LED
 }

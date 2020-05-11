@@ -13,11 +13,11 @@ unsigned long ulCH4PPMValue = 0;  //PPM
 
 //SUS316L
 char ucSU_ZeroAd_Command[] = {0x3a,0x31,0x00,0x00,0x31,0x0d,0x0a};
-char ucSU_Correct_Command[] = {0x3a,0x33,0x01,0x90,0xc4,0x0d,0x0a};
+char ucSU_Correct_Command[] = {0x3a,0x33,0x01,0x90,0xc4,0x0d,0x0a}; //40% {0x3a,0x33,0x00,0x1e,0xc4,0x0d,0x0a}; //3%
 char ucSU_Reset_Command[] = {0x3a,0x35,0x00,0x00,0x35,0x0d,0x0a};
 
 char ucSU_ZeroRev_data[] ={0x3a,0x32,0x31,0x63,0x0d,0x0a};
-char ucSU_CorrectRev_data[] ={0x3a,0x34,0x31,0x65,0x0d,0x0a};
+char ucSU_CorrectRev_data[] ={0x3a,0x34,0x31,0x65,0x0d,0x0a}; 
 char ucSU_ResetRev_data[] ={0x3a,0x36,0x31,0x67,0x0d,0x0a};
 
 //MIPEX_03
@@ -176,7 +176,7 @@ void GP_SensorSet(unsigned char s_s)
 			{
 				case S_RESET:
 				{
-					len = strlen(ucSU_Reset_Command);
+					len = 7;//strlen(ucSU_Reset_Command);
 					for(i=0;i<len;i++)
 					{
 						UART1SendByte(ucSU_Reset_Command[i]);
@@ -201,7 +201,7 @@ void GP_SensorSet(unsigned char s_s)
 					break;
 				case S_ZERO:
 				{
-					len = strlen(ucSU_ZeroAd_Command);
+					len = 7;//strlen(ucSU_ZeroAd_Command);
 					for(i=0;i<len;i++)
 					{
 						UART1SendByte(ucSU_ZeroAd_Command[i]);
@@ -227,7 +227,7 @@ void GP_SensorSet(unsigned char s_s)
 				
 				case S_CORRECT:
 				{
-					len = strlen(ucSU_Correct_Command);
+					len = 7;//strlen(ucSU_Correct_Command);
 					for(i=0;i<len;i++)
 					{
 						UART1SendByte(ucSU_Correct_Command[i]);
@@ -359,7 +359,7 @@ void GP_CurrentSet(float g_ma)
 	{
 		g_ma = 4;
 	}
-	DAC_Voltage_OutPut(g_ma/10);
+	DAC_Voltage_OutPut((float)(g_ma/10.0));
 }
 
 float out_ma;

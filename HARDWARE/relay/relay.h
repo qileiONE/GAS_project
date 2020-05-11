@@ -3,8 +3,8 @@
 
 #include "sys.h"
 
-#define RELAY_Pin_WARN 					GPIO_Pin_5
-#define RELAY_GPIO_Port_WARN 				GPIOB
+#define RELAY_Pin_WARN 					GPIO_Pin_15
+#define RELAY_GPIO_Port_WARN 				GPIOA
 
 #define RELAY_Pin_UP 					GPIO_Pin_3
 #define RELAY_GPIO_Port_UP 				GPIOB

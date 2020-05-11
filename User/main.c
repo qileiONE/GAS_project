@@ -16,9 +16,29 @@
 #include "key.h"
 #include "relay.h"
 
+void SystemInit11(void)
+{
+	RCC->CR |= (uint32_t)0x00000001;
+	RCC->CFGR |= (uint32_t)RCC_CFGR_PLLSRC_HSI_Div2;
+	RCC->CFGR |= (uint32_t)RCC_CFGR_PLLMULL6;
+	RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+	RCC->CR |= RCC_CR_PLLON;
+
+	while((RCC->CR & RCC_CR_PLLRDY) == 0)
+	{
+	
+	}
+	RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+	RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;
+	while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+	{
+		
+	}
+}
 
 int main()
 {
+	SystemInit11();
 	delay_init();	    	 //	  
 	NVIC_Configuration(); 	 //
 	TIM2_NVIC_Configuration(); 
@@ -38,11 +58,11 @@ int main()
 	LCD_DisClear();
 	//DAC_Voltage_OutPut(1.5);
 	
-	SensorTypeCheck();
-	LED_Warn(LED_ON);
+	//SensorTypeCheck();
+	LED_Warn(LED_OFF);
 	
 	GP_LEL2Current(0);
-	//uCurrentSensor = 1;
+	uCurrentSensor = 1;
 //	time_enable = 1;
 //	time_count_num = 100;
 	
@@ -63,11 +83,29 @@ int main()
 		if(ulCH4LELValue >= UPPER_LIMIT*10)
 		{
 			RELAY_UP(ON);
-			RELAY_WARN(ON);
+		//	RELAY_WARN(ON);
+			RELAY_DOWN(OFF);
 		}
-		else if(ulCH4LELValue < LOWER_LIMIT*10)
+		else if(ulCH4LELValue > LOWER_LIMIT*10)
 		{
 			RELAY_DOWN(ON);
+	//		RELAY_WARN(OFF);
+			RELAY_UP(OFF);
+		}
+		else 
+		{
+			RELAY_UP(OFF);
+	//		RELAY_WARN(OFF);
+			RELAY_DOWN(OFF);
+		}
+		
+		if(ulCH4LELValue > WARN_LIMIT*10)
+		{
+			RELAY_WARN(ON);
+		}
+		else
+		{
+			RELAY_WARN(OFF);
 		}
 		
 		Key_Process();
